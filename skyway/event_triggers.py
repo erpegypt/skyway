@@ -88,6 +88,12 @@ def dn_after_insert(doc, method=None):
 def dn_onload(doc, method=None):
     pass
 @frappe.whitelist()
+def dn_before_validate(doc, method=None):
+    pass
+@frappe.whitelist()
+def dn_validate(doc, method=None):
+    pass
+@frappe.whitelist()
 def dn_on_submit(doc, method=None):
     pass
 @frappe.whitelist()
@@ -159,10 +165,13 @@ def pe_validate(doc, method=None):
     pass
 @frappe.whitelist()
 def pe_on_submit(doc, method=None):
-    pass
+    if doc.reference_name:
+        frappe.db.set_value('Ticket', doc.reference_name, "payment_entry_status", doc.status)
 @frappe.whitelist()
 def pe_on_cancel(doc, method=None):
-    pass
+    if doc.reference_name:
+        frappe.db.set_value('Ticket', doc.reference_name, "payment_entry", "")
+        frappe.db.set_value('Ticket', doc.reference_name, "payment_entry_status", "")
 @frappe.whitelist()
 def pe_on_update_after_submit(doc, method=None):
     pass
@@ -399,22 +408,23 @@ def ste_onload(doc, method=None):
     pass
 @frappe.whitelist()
 def ste_before_validate(doc, method=None):
-    ticket_item = frappe.get_doc('Ticket Items', doc.ticket_item)
-    ticket_item.stock_entry = doc.name
-    if doc.docstatus == 0:
-        ticket_item.stock_entry_status = "Draft"
-    if doc.docstatus == 1:
-        ticket_item.stock_entry_status = "Submitted"
-
+    pass
 @frappe.whitelist()
 def ste_validate(doc, method=None):
-    pass
+    if doc.ticket:
+        frappe.db.set_value('Ticket Items', doc.ticket_item, "stock_entry", doc.name)
+        if doc.docstatus == 0:
+            frappe.db.set_value('Ticket Items', doc.ticket_item, "stock_entry_status", "Draft")
+        if doc.docstatus == 1:
+            frappe.db.set_value('Ticket Items', doc.ticket_item, "stock_entry_status", "Submitted")
 @frappe.whitelist()
 def ste_on_submit(doc, method=None):
     pass
 @frappe.whitelist()
 def ste_on_cancel(doc, method=None):
-    pass
+    if doc.ticket:
+        frappe.db.set_value('Ticket Items', doc.ticket_item, "stock_entry", "")
+        frappe.db.set_value('Ticket Items', doc.ticket_item, "stock_entry_status", "")
 @frappe.whitelist()
 def ste_on_update_after_submit(doc, method=None):
     pass

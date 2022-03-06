@@ -34,7 +34,7 @@ class Ticket(Document):
 		for x in details:
 			if x.delivery_note in self.items and x.item_code in self.items:
 				pass
-			
+
 			if x.delivery_note not in self.items and x.item_code not in self.items:
 				result = {
 					'delivery_note': x.delivery_note,
@@ -62,6 +62,7 @@ class Ticket(Document):
 			"posting_date": self.posting_date,
 			"payment_type": "Receive",
 			"mode_of_payment": "بدل صيانة",
+			"reference_doctype": "Ticket",
 			"reference_name": self.name,
 			"paid_to": "خزينة الادارة - Sky",
 			"party_type": "Customer",

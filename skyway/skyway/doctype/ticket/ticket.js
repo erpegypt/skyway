@@ -12,7 +12,7 @@ frappe.ui.form.on('Ticket', {
             }
         });
 	}
-})
+});
 
 frappe.ui.form.on('Ticket', {
     create_payment_entry: function(frm) {
@@ -24,8 +24,7 @@ frappe.ui.form.on('Ticket', {
             }
         });
 	}
-})
-
+});
 
 frappe.ui.form.on("Ticket Items", "create_stock_entry", function(frm,cdt,cdn) {
     var d = locals[cdt][cdn];
