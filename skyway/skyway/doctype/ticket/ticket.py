@@ -26,47 +26,51 @@ class Ticket(Document):
 	def check_mandatory_fields(self):
 		for x in self.items:
 			if not x.warranty:
-				frappe.throw("Row #" + str(x.idx) + " Please Select The Warranty Status ")
+				frappe.throw("Row #" + str(x.idx) + ": Please Select The Warranty Status For Serial " + x.serial)
+			if not x.issue_description:
+				frappe.throw("Row #" + str(x.idx) + ": Please Mention The Issue Description For Serial " + x.serial)
 
 	@frappe.whitelist()
 	def get_serial_details(self):
-		details = frappe.db.sql(""" select `tabDelivery Note`.name as delivery_note, 
-											`tabDelivery Note`.posting_date as dn_date,
-											`tabDelivery Note Item`.item_code as item_code, 
-											`tabDelivery Note Item`.item_name as item_name
-									from `tabDelivery Note Item` join `tabDelivery Note` 
-									on `tabDelivery Note Item`.parent = `tabDelivery Note`.name
-									where `tabDelivery Note`.docstatus = 1 
-									and `tabDelivery Note`.customer = '{customer}'
-									and `tabDelivery Note Item`.serials like '%{serial}%' 
-									""".format(customer=self.customer, serial=self.serial_no), as_dict=1)
+		if not self.customer:
+			frappe.throw(" Please Select A Customer")
+		check = frappe.db.sql(""" select serial, idx
+								  from `tabTicket Items` 
+								  where parent = '{parent}' and serial = '{serial}' 
+							  """.format(parent=self.name, serial=self.serial_no), as_dict=1)
+		for z in check:
+			if z.serial:
+				frappe.throw("Duplicated Entry: Serial " + z.serial + " Has Been Added In Row #" + str(z.idx))
+		else:
+			details = frappe.db.sql(""" select `tabDelivery Note`.name as delivery_note, 
+												`tabDelivery Note`.posting_date as dn_date,
+												`tabDelivery Note Item`.item_code as item_code, 
+												`tabDelivery Note Item`.name as dn_item_name, 
+												`tabDelivery Note Item`.item_name as item_name
+										from `tabDelivery Note Item` join `tabDelivery Note` 
+										on `tabDelivery Note Item`.parent = `tabDelivery Note`.name
+										where `tabDelivery Note`.docstatus = 1 
+										and `tabDelivery Note`.customer = '{customer}'
+										and `tabDelivery Note Item`.serials like '%{serial}%'
+										""".format(customer=self.customer, serial=self.serial_no, parent=self.name), as_dict=1)
 
-		for x in details:
-			if x.delivery_note in self.items and x.item_code in self.items:
-				pass
-
-			if x.delivery_note not in self.items and x.item_code not in self.items:
+			for x in details:
 				result = {
 					'delivery_note': x.delivery_note,
+					'dn_item_name': x.dn_item_name,
 					'dn_date': x.dn_date,
 					'item_code': x.item_code,
-					'item_name': x.item_name
+					'item_name': x.item_name,
+					'serial': self.serial_no,
+					'cost': 0
 				}
 				self.append("items", result)
-				frappe.db.commit()
-
-		'''
-		for x in details:
-			if x.delivery_note not in self.items and x.item_code not in self.items:
-				y = self.append("items", {})
-				y.delivery_note = x.delivery_note
-				y.dn_date = x.dn_date
-				y.item_code = x.item_code
-				y.item_name = x.item_name
-		'''
+			self.save()
 
 	@frappe.whitelist()
 	def create_payment_entry(self):
+		if self.total_cost == 0:
+			frappe.throw(" Please Add The Cost In The Items Table")
 		pe_doc = frappe.get_doc({
 			"doctype": "Payment Entry",
 			"posting_date": self.posting_date,
@@ -88,6 +92,5 @@ class Ticket(Document):
 		self.payment_entry_status = pe_doc.status
 		self.save()
 		self.reload()
-
 
 	pass

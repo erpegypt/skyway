@@ -8,7 +8,6 @@ frappe.ui.form.on('Ticket', {
             method: "get_serial_details",
                 callback: function(r) {
                 refresh_field("items");
-                cur_frm.save('Save');
             }
         });
 	}
@@ -36,6 +35,13 @@ frappe.ui.form.on("Ticket Items", "create_stock_entry", function(frm,cdt,cdn) {
     };
     frappe.new_doc("Stock Entry");
 });
+
+frappe.ui.form.on("Ticket", "customer", function(frm) {
+    cur_frm.save('Save');
+});
+
+
+
 
 
 
