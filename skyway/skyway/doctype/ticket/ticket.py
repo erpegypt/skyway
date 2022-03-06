@@ -12,11 +12,21 @@ class Ticket(Document):
 		self.calculate_total()
 
 	@frappe.whitelist()
+	def on_submit(self):
+		self.check_mandatory_fields()
+
+	@frappe.whitelist()
 	def calculate_total(self):
 		totals = 0
 		for x in self.items:
 			totals += x.cost
 		self.total_cost = totals
+
+	@frappe.whitelist()
+	def check_mandatory_fields(self):
+		for x in self.items:
+			if not x.warranty:
+				frappe.throw("Row #" + str(x.idx) + " Please Select The Warranty Status ")
 
 	@frappe.whitelist()
 	def get_serial_details(self):
