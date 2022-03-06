@@ -1,0 +1,145 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-03-03 14:30:00.225815",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "delivery_note",
+  "dn_date",
+  "column_break_4",
+  "item_code",
+  "item_name",
+  "section_break_7",
+  "warranty",
+  "issue_description",
+  "column_break_10",
+  "cost",
+  "resolution_description",
+  "section_break_13",
+  "create_stock_entry",
+  "column_break_15",
+  "stock_entry",
+  "column_break_17",
+  "stock_entry_status"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "delivery_note",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Delivery Note",
+   "options": "Delivery Note"
+  },
+  {
+   "columns": 2,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "columns": 3,
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fetch_from": "delivery_note.posting_date",
+   "fieldname": "dn_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "DN Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warranty",
+   "fieldtype": "Select",
+   "label": "Warranty",
+   "options": "\nUnder Warranty\nOut Of Warranty\nExternal"
+  },
+  {
+   "fieldname": "issue_description",
+   "fieldtype": "Text Editor",
+   "label": "Issue Description"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "resolution_description",
+   "fieldtype": "Text Editor",
+   "label": "Resolution Description"
+  },
+  {
+   "columns": 1,
+   "fieldname": "cost",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Cost"
+  },
+  {
+   "fieldname": "create_stock_entry",
+   "fieldtype": "Button",
+   "label": "Create Stock Entry"
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_entry_status",
+   "fieldtype": "Data",
+   "label": "Stock Entry Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-03-06 12:27:32.683520",
+ "modified_by": "Administrator",
+ "module": "Skyway",
+ "name": "Ticket Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
