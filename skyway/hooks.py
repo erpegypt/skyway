@@ -10,7 +10,6 @@ app_email = "info@erpcloud.systems"
 app_license = "MIT"
 
 
-
 doc_events = {
 "Quotation": {
 	"before_insert": "skyway.event_triggers.quot_before_insert",

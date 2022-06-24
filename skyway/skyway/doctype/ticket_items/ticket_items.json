@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_1",
+  "customer",
   "delivery_note",
   "dn_date",
   "dn_item_name",
@@ -37,7 +38,7 @@
    "options": "Delivery Note"
   },
   {
-   "columns": 2,
+   "columns": 1,
    "fieldname": "item_code",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -45,7 +46,7 @@
    "options": "Item"
   },
   {
-   "columns": 3,
+   "columns": 2,
    "fetch_from": "item_code.item_name",
    "fieldname": "item_name",
    "fieldtype": "Data",
@@ -54,13 +55,12 @@
    "read_only": 1
   },
   {
-   "columns": 2,
+   "columns": 1,
    "fetch_from": "delivery_note.posting_date",
    "fieldname": "dn_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "DN Date",
-   "read_only": 1
+   "label": "DN Date"
   },
   {
    "fieldname": "warranty",
@@ -82,23 +82,23 @@
   {
    "allow_on_submit": 1,
    "columns": 1,
+   "default": "0",
    "fieldname": "cost",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Cost"
   },
   {
-   "depends_on": "eval:doc.stock_entry == \"\"",
+   "depends_on": "eval:!doc.stock_entry",
    "fieldname": "create_stock_entry",
    "fieldtype": "Button",
    "label": "Create Stock Entry"
   },
   {
    "fieldname": "stock_entry",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Stock Entry",
    "no_copy": 1,
-   "options": "Stock Entry",
    "read_only": 1
   },
   {
@@ -143,16 +143,25 @@
    "read_only": 1
   },
   {
+   "columns": 1,
    "fieldname": "serial",
    "fieldtype": "Data",
-   "label": "Serial No",
-   "read_only": 1
+   "in_list_view": 1,
+   "label": "Serial No"
+  },
+  {
+   "columns": 2,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-03-06 18:47:16.855817",
+ "modified": "2022-03-31 17:37:50.892310",
  "modified_by": "Administrator",
  "module": "Skyway",
  "name": "Ticket Items",

@@ -31,13 +31,14 @@ frappe.ui.form.on("Ticket Items", "create_stock_entry", function(frm,cdt,cdn) {
         "stock_entry_type": "Material Issue",
         "ticket": frm.doc.name,
         "ticket_item": d.name
-
     };
     frappe.new_doc("Stock Entry");
 });
 
-frappe.ui.form.on("Ticket", "customer", function(frm) {
-    cur_frm.save('Save');
+frappe.ui.form.on("Ticket", "validate", function(){
+    for (var i = 0; i < cur_frm.doc.items.length; i++){
+        cur_frm.doc.customer = cur_frm.doc.items[0].customer;
+    }
 });
 
 

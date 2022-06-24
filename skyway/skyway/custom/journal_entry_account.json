@@ -63,6 +63,31 @@
  ],
  "custom_perms": [],
  "doctype": "Journal Entry Account",
- "property_setters": [],
+ "property_setters": [
+  {
+   "_assign": null,
+   "_comments": null,
+   "_liked_by": null,
+   "_user_tags": null,
+   "creation": "2022-01-03 11:47:01.624384",
+   "default_value": null,
+   "doc_type": "Journal Entry Account",
+   "docstatus": 0,
+   "doctype_or_field": "DocField",
+   "field_name": "cost_center",
+   "idx": 0,
+   "modified": "2022-01-03 11:47:01.624384",
+   "modified_by": "Administrator",
+   "name": "Journal Entry Account-cost_center-default",
+   "owner": "Administrator",
+   "parent": null,
+   "parentfield": null,
+   "parenttype": null,
+   "property": "default",
+   "property_type": "Text",
+   "row_name": null,
+   "value": ""
+  }
+ ],
  "sync_on_migrate": 1
 }

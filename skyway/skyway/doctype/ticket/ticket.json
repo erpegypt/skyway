@@ -10,10 +10,14 @@
   "naming_series",
   "customer",
   "customer_name",
+  "sales_person",
+  "customer_representative",
+  "mobile_no",
   "column_break_4",
   "amended_from",
   "posting_date",
   "issue_type",
+  "payment_method",
   "section_break_7",
   "serial_no",
   "column_break_9",
@@ -50,8 +54,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Customer",
-   "options": "Customer",
-   "reqd": 1
+   "options": "Customer"
   },
   {
    "fetch_from": "customer.customer_name",
@@ -67,8 +70,11 @@
   {
    "fieldname": "issue_type",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Issue Type",
-   "options": "Issue Type"
+   "options": "Issue Type",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_7",
@@ -78,7 +84,8 @@
    "fieldname": "items",
    "fieldtype": "Table",
    "label": "Items",
-   "options": "Ticket Items"
+   "options": "Ticket Items",
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",
@@ -109,10 +116,10 @@
   {
    "fieldname": "serial_no",
    "fieldtype": "Data",
-   "label": "Serial No",
-   "options": "Barcode"
+   "label": "Serial No"
   },
   {
+   "depends_on": "eval:doc.docstatus == 0",
    "fieldname": "get_serial_details",
    "fieldtype": "Button",
    "label": "Get Serial Details"
@@ -126,8 +133,10 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "total_cost",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Total Cost",
    "read_only": 1
   },
@@ -136,7 +145,7 @@
    "fieldtype": "Section Break"
   },
   {
-   "depends_on": "eval:doc.payment_entry == \"\"",
+   "depends_on": "eval:!doc.payment_entry",
    "fieldname": "create_payment_entry",
    "fieldtype": "Button",
    "label": "Create Payment Entry"
@@ -146,11 +155,11 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "payment_entry",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Payment Entry",
    "no_copy": 1,
-   "options": "Payment Entry",
    "read_only": 1
   },
   {
@@ -158,6 +167,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "payment_entry_status",
    "fieldtype": "Data",
    "label": "Payment Entry Status",
@@ -177,6 +187,8 @@
    "default": "Today",
    "fieldname": "posting_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Date"
   },
   {
@@ -187,12 +199,48 @@
    "fieldname": "general_notes",
    "fieldtype": "Text Editor",
    "label": "General Notes"
+  },
+  {
+   "fieldname": "sales_person",
+   "fieldtype": "Data",
+   "label": "Sales Person"
+  },
+  {
+   "fieldname": "customer_representative",
+   "fieldtype": "Data",
+   "label": "Customer Representative",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No",
+   "options": "Phone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "label": "Payment Method",
+   "options": "\n\u0643\u0627\u0634\n\u0641\u064a\u0632\u0627\n\u0634\u064a\u0643\n\u0634\u062d\u0646 \u0645\u0642\u0627\u0628\u0644 \u0627\u064a\u062f\u0627\u0639\n\u0634\u062d\u0646 \u0628\u0645\u0642\u0627\u0628\u0644\n\u0627\u062c\u0644\n\u0628\u062f\u0644 \u0635\u064a\u0627\u0646\u0629\n\u0641\u0648\u062f\u0627\u0641\u0648\u0646 \u0643\u0627\u0634\n\u062f\u0641\u0639\u0629 \u062a\u062d\u062a \u0627\u0644\u062d\u0633\u0627\u0628",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2022-03-06 15:29:26.440644",
+ "links": [
+  {
+   "custom": 1,
+   "link_doctype": "Payment Entry",
+   "link_fieldname": "reference_name"
+  },
+  {
+   "custom": 1,
+   "link_doctype": "Stock Entry",
+   "link_fieldname": "ticket"
+  }
+ ],
+ "modified": "2022-03-31 17:53:46.081768",
  "modified_by": "Administrator",
  "module": "Skyway",
  "name": "Ticket",
