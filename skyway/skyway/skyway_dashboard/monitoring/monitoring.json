@@ -1,0 +1,28 @@
+{
+ "cards": [
+  {
+   "card": "Open Tickets"
+  },
+  {
+   "card": "Open Installation Note"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Sales Order Analysis",
+   "width": "Half"
+  }
+ ],
+ "creation": "2022-06-25 13:41:53.501824",
+ "dashboard_name": "Monitoring",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 1,
+ "is_standard": 1,
+ "modified": "2022-06-25 15:21:12.756634",
+ "modified_by": "a.taj@erpcloud.systems",
+ "module": "Skyway",
+ "name": "Monitoring",
+ "owner": "a.taj@erpcloud.systems"
+}
