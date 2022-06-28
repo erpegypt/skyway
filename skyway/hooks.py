@@ -458,7 +458,7 @@ doc_events = {
 		"after_insert": "skyway.doctype_triggers.selling.customer.customer.after_insert",
 		"onload": "skyway.doctype_triggers.selling.customer.customer.onload",
 		"before_validate": "skyway.doctype_triggers.selling.customer.customer.before_validate",
-		"validate": "skyway.doctype_triggers.project.customer.customer.validate",
+		"validate": "skyway.doctype_triggers.selling.customer.customer.validate",
 		"before_save": "skyway.doctype_triggers.selling.customer.customer.before_save",
 		"on_update": "skyway.doctype_triggers.selling.customer.customer.on_update",
 	},
