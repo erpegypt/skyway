@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
+from datetime import date
 
 
 @frappe.whitelist()
@@ -154,7 +155,7 @@ def on_submit(doc, method=None):
                 "territory": doc.territory,
                 "customer_address": doc.customer_address,
                 "contact_person": doc.contact_person,
-                "inst_date": doc.delivery_date,
+                "inst_date": date.today(),
             })
         so_items = frappe.db.sql(""" select a.name, a.idx, a.item_code, a.item_name, a.description, a.qty, a.rate, a.amount
                                            from `tabSales Order Item` a join `tabSales Order` b
