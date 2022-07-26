@@ -171,9 +171,9 @@ def on_submit(doc, method=None):
             items.qty = c.qty
             items.rate = c.rate
             items.amount = c.amount
-            items.prevdoc_detail_docname = c.name
-            items.prevdoc_docname = doc.name
-            items.prevdoc_doctype = "Sales Order"
+            #items.prevdoc_detail_docname = c.name
+            items.prevdoc_docname = new_doc.name
+            items.prevdoc_doctype = "Delivery Note"
 
         new_doc3.insert(ignore_permissions=True)
         if lang == "ar":
