@@ -4,23 +4,23 @@ from frappe import _
 
 
 @frappe.whitelist()
-def price_before_insert(doc, method=None):
+def before_insert(doc, method=None):
     pass
 @frappe.whitelist()
-def price_after_insert(doc, method=None):
+def after_insert(doc, method=None):
     pass
 @frappe.whitelist()
-def price_onload(doc, method=None):
+def onload(doc, method=None):
     pass
 @frappe.whitelist()
-def price_before_validate(doc, method=None):
+def before_validate(doc, method=None):
     pass
 @frappe.whitelist()
-def price_validate(doc, method=None):
+def validate(doc, method=None):
     pass
 @frappe.whitelist()
-def price_before_save(doc, method=None):
+def before_save(doc, method=None):
     pass
 @frappe.whitelist()
-def price_on_update(doc, method=None):
+def on_update(doc, method=None):
     pass

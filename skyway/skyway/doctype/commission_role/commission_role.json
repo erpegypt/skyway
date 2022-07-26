@@ -1,0 +1,133 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2022-07-17 21:38:28.225079",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "disabled",
+  "section_break_8",
+  "get_items_from",
+  "column_break_4",
+  "brand",
+  "item_group",
+  "get_items",
+  "naming_series",
+  "amended_from",
+  "section_break_9",
+  "commission_details",
+  "commission_item_section",
+  "commission_item"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "CO-Role:.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Commission Role",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break",
+   "label": "Item Details"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break",
+   "label": "Commission Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "commission_details",
+   "fieldtype": "Table",
+   "label": "Commission Details",
+   "options": "Commission Details"
+  },
+  {
+   "fieldname": "get_items_from",
+   "fieldtype": "Select",
+   "label": "Get Items From",
+   "options": "\nItem Group\nBrand\nItem Group-Brand"
+  },
+  {
+   "fieldname": "commission_item_section",
+   "fieldtype": "Section Break",
+   "label": "Commission Item"
+  },
+  {
+   "fieldname": "commission_item",
+   "fieldtype": "Table",
+   "label": "Commission Item",
+   "options": "Commission Item"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "depends_on": "eval:doc.get_items_from == \"Item Group\" ||doc.get_items_from == \"Brand\" || doc.get_items_from == \"Item Group-Brand\"",
+   "fieldname": "get_items",
+   "fieldtype": "Button",
+   "label": "Get Items"
+  },
+  {
+   "depends_on": "eval:doc.get_items_from == \"Brand\" || doc.get_items_from == \"Item Group-Brand\"\n",
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "Brand",
+   "options": "Brand"
+  },
+  {
+   "depends_on": "eval:doc.get_items_from == \"Item Group\" || doc.get_items_from == \"Item Group-Brand\"\n",
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Group",
+   "options": "Item Group"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-07-18 14:20:37.491645",
+ "modified_by": "Administrator",
+ "module": "Skyway",
+ "name": "Commission Role",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1
+}

@@ -154,7 +154,7 @@ def on_submit(doc, method=None):
                 "territory": doc.territory,
                 "customer_address": doc.customer_address,
                 "contact_person": doc.contact_person,
-                "inst_date": doc.transaction_date,
+                "inst_date": doc.delivery_date,
             })
         so_items = frappe.db.sql(""" select a.name, a.idx, a.item_code, a.item_name, a.description, a.qty, a.rate, a.amount
                                            from `tabSales Order Item` a join `tabSales Order` b
@@ -177,9 +177,9 @@ def on_submit(doc, method=None):
 
         new_doc3.insert(ignore_permissions=True)
         if lang == "ar":
-            frappe.msgprint("  تم إنشاء إذن تركيب رقم " + new_doc.name)
+            frappe.msgprint("  تم إنشاء إذن تركيب رقم " + new_doc3.name)
         else:
-            frappe.msgprint(" Installation Note " + new_doc.name + " Created ")
+            frappe.msgprint(" Installation Note " + new_doc3.name + " Created ")
 @frappe.whitelist()
 def on_cancel(doc, method=None):
     pass

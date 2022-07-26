@@ -327,6 +327,7 @@ def siv_before_validate(doc, method=None):
 @frappe.whitelist()
 def siv_validate(doc, method=None):
     pass
+
 @frappe.whitelist()
 def siv_on_submit(doc, method=None):
     pass
