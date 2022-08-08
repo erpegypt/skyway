@@ -8,13 +8,13 @@
  "field_order": [
   "discount_from",
   "discount_to",
-  "commission"
+  "commission_percent"
  ],
  "fields": [
   {
    "allow_in_quick_entry": 1,
    "fieldname": "discount_from",
-   "fieldtype": "Percent",
+   "fieldtype": "Float",
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
@@ -23,26 +23,22 @@
   {
    "allow_in_quick_entry": 1,
    "fieldname": "discount_to",
-   "fieldtype": "Percent",
+   "fieldtype": "Float",
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Discount To"
   },
   {
-   "allow_in_quick_entry": 1,
-   "fieldname": "commission",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Commission"
+   "fieldname": "commission_percent",
+   "fieldtype": "Float",
+   "label": "Commission Percent"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-07-18 09:35:52.728483",
+ "modified": "2022-08-01 16:05:43.829805",
  "modified_by": "Administrator",
  "module": "Skyway",
  "name": "Commission Details",

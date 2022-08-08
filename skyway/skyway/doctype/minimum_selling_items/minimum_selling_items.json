@@ -1,0 +1,132 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2022-07-31 21:12:15.198024",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "disabled",
+  "section_break_8",
+  "get_items_from",
+  "column_break_4",
+  "brand",
+  "item_group",
+  "get_items",
+  "naming_series",
+  "amended_from",
+  "commission_item_section",
+  "commission_item"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break",
+   "label": "Item Details"
+  },
+  {
+   "fieldname": "get_items_from",
+   "fieldtype": "Select",
+   "label": "Get Items From",
+   "options": "\nItem Group\nBrand\nItem Group-Brand"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.get_items_from == \"Brand\" || doc.get_items_from == \"Item Group-Brand\"\n",
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "Brand",
+   "options": "Brand"
+  },
+  {
+   "depends_on": "eval:doc.get_items_from == \"Item Group\" || doc.get_items_from == \"Item Group-Brand\"\n",
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Group",
+   "options": "Item Group"
+  },
+  {
+   "bold": 1,
+   "depends_on": "eval:doc.get_items_from == \"Item Group\" ||doc.get_items_from == \"Brand\" || doc.get_items_from == \"Item Group-Brand\"",
+   "fieldname": "get_items",
+   "fieldtype": "Button",
+   "label": "Get Items"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "naming_series",
+   "options": "MINI-Sell:.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Commission Role",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "commission_item_section",
+   "fieldtype": "Section Break",
+   "label": "Commission Item"
+  },
+  {
+   "fieldname": "commission_item",
+   "fieldtype": "Table",
+   "label": "Minimum Item",
+   "options": "Minimum Item"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Commission Role",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-08-01 01:16:29.562787",
+ "modified_by": "Administrator",
+ "module": "Skyway",
+ "name": "Minimum Selling Items",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1
+}

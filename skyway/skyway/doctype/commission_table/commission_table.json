@@ -10,9 +10,11 @@
   "customer",
   "posting_date",
   "item",
+  "column_break_9",
+  "discount_percentage",
   "amount",
   "commissions_percent",
-  "commissions"
+  "commission_amount"
  ],
  "fields": [
   {
@@ -22,7 +24,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Sales Invoice",
-   "options": "Sales Invoice"
+   "options": "Sales Invoice",
+   "read_only": 1
   },
   {
    "fieldname": "customer",
@@ -32,7 +35,8 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Customer",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only": 1
   },
   {
    "fieldname": "posting_date",
@@ -40,7 +44,8 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Posting Date"
+   "label": "Posting Date",
+   "read_only": 1
   },
   {
    "fieldname": "item",
@@ -50,23 +55,18 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Item",
-   "options": "Item"
+   "options": "Item",
+   "read_only": 1
   },
   {
-   "fieldname": "commissions",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Commissions"
-  },
-  {
+   "default": "0",
    "fieldname": "commissions_percent",
-   "fieldtype": "Percent",
+   "fieldtype": "Float",
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Commissions Percent"
+   "label": "Commissions Percent",
+   "read_only": 1
   },
   {
    "fieldname": "amount",
@@ -74,13 +74,34 @@
    "in_global_search": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Amount"
+   "label": "Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discount_percentage",
+   "fieldtype": "Float",
+   "label": "Discount Percentage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "commission_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Commission Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-07-18 10:22:49.725531",
+ "modified": "2022-08-01 16:04:50.380821",
  "modified_by": "Administrator",
  "module": "Skyway",
  "name": "Commission Table",

@@ -17,7 +17,13 @@
   "sales_partner_account",
   "commission_table_section",
   "commission_table",
+  "section_break_15",
+  "total_selling",
+  "minimum_selling_percent",
   "total_payable",
+  "column_break_12",
+  "target_amount",
+  "minimum_selling_item_percent",
   "journal_entry"
  ],
  "fields": [
@@ -73,7 +79,8 @@
   {
    "fieldname": "total_payable",
    "fieldtype": "Currency",
-   "label": "Total Payable"
+   "label": "Total Payable",
+   "read_only": 1
   },
   {
    "fieldname": "journal_entry",
@@ -94,7 +101,7 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Frome Date",
+   "label": "From Date",
    "reqd": 1
   },
   {
@@ -102,12 +109,49 @@
    "fieldtype": "Date",
    "label": "To Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_amount",
+   "fieldtype": "Currency",
+   "label": "Target Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_selling",
+   "fieldtype": "Currency",
+   "label": "Total Selling",
+   "read_only": 1
+  },
+  {
+   "fieldname": "minimum_selling_item_percent",
+   "fieldtype": "Float",
+   "label": "Minimum Selling Item Percent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "minimum_selling_percent",
+   "fieldtype": "Percent",
+   "label": "Minimum Target Percent",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2022-07-18 15:46:27.453843",
+ "links": [
+  {
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "cheque_no"
+  }
+ ],
+ "modified": "2022-08-08 09:54:15.239314",
  "modified_by": "Administrator",
  "module": "Skyway",
  "name": "Commission Payment",
