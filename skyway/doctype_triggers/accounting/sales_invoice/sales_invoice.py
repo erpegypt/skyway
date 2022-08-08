@@ -17,7 +17,11 @@ def before_validate(doc, method=None):
     pass
 @frappe.whitelist()
 def validate(doc, method=None):
-    pass
+    for x in doc.items:
+        if x.discount_amount <0:
+            x.discount_percentage = 0
+            x.discount_percentage = (x.discount_amount / x.price_list_rate ) * 100
+
 @frappe.whitelist()
 def on_submit(doc, method=None):
     pass

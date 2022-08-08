@@ -183,7 +183,7 @@ class CommissionPayment(Document):
 												""".format(sales_partner=self.sales_partner, from_date=self.from_date,
 														   to_date=self.to_date, item=mini_item_name ), as_dict=True)
 			for y in invoices:
-				mini_payable_amount = (self.target_amount *80) / 100
+				mini_payable_amount = (self.target_amount * self.minimum_selling_percent) / 100
 				total_minimum += y.amount
 				self.minimum_selling_item_percent = ( total_minimum / mini_payable_amount  )*100
 
