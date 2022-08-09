@@ -45,7 +45,7 @@ class CommissionRole(Document):
 					y.item_group = x.item_group
 					y.brand = x.brand
 			
-		self.save()
+		#self.save()
 	@frappe.whitelist()
 	def validate(self):
 		self.get_items_from = ""

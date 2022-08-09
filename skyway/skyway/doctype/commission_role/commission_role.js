@@ -25,7 +25,7 @@ frappe.ui.form.on('Commission Role', {
             method: "get_items",
                 callback: function(r) {
                 refresh_field("commission_item");
-                //cur_frm.save('Save');
+                cur_frm.save('Save');
             }
         });
 	}
