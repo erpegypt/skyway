@@ -87,6 +87,7 @@ class CommissionPayment(Document):
 															""".format( parent = par.parent, discount_percentage = comm.discount_percentage ),  as_dict=True)
 
 				for commission in commission_perc:
+					commission_percen1 = 0
 					commission_percen1 = commission.commission_percent
 
 				row = self.append('commission_table', {})
