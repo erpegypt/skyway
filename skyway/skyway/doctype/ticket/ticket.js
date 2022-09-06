@@ -34,6 +34,16 @@ frappe.ui.form.on("Ticket Items", "create_stock_entry", function(frm,cdt,cdn) {
     };
     frappe.new_doc("Stock Entry");
 });
+frappe.ui.form.on("Ticket Items", "create_sales_order", function(frm,cdt,cdn) {
+    var d = locals[cdt][cdn];
+    frappe.route_options = {
+        "stock_entry_type": "Sales Order",
+        "ticket": frm.doc.name,
+        "ticket_item": d.name,
+        "customer": d.customer,
+    };
+    frappe.new_doc("Sales Order");
+});
 
 frappe.ui.form.on("Ticket", "validate", function(){
     for (var i = 0; i < cur_frm.doc.items.length; i++){

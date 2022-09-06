@@ -18,7 +18,12 @@ def before_validate(doc, method=None):
     pass
 @frappe.whitelist()
 def validate(doc, method=None):
-    pass
+     if doc.ticket:
+        frappe.db.set_value('Ticket Items', doc.ticket_item, "sales_order", doc.name)
+        if doc.docstatus == 0:
+            frappe.db.set_value('Ticket Items', doc.ticket_item, "sales_order_status", "Draft")
+        if doc.docstatus == 1:
+            frappe.db.set_value('Ticket Items', doc.ticket_item, "sales_order_status", "Submitted")
 @frappe.whitelist()
 def on_submit(doc, method=None):
     user = frappe.session.user
@@ -183,7 +188,9 @@ def on_submit(doc, method=None):
             frappe.msgprint(" Installation Note " + new_doc3.name + " Created ")
 @frappe.whitelist()
 def on_cancel(doc, method=None):
-    pass
+    if doc.ticket:
+        frappe.db.set_value('Ticket Items', doc.ticket_item, "sales_order", "")
+        frappe.db.set_value('Ticket Items', doc.ticket_item, "sales_order_status", "")
 @frappe.whitelist()
 def on_update_after_submit(doc, method=None):
     pass
