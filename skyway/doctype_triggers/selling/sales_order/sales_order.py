@@ -52,6 +52,7 @@ def on_submit(doc, method=None):
     new_doc = frappe.get_doc({
         "doctype": "Delivery Note",
         "customer": doc.customer,
+        "company": doc.company,
         "customer_group": doc.customer_group,
         "territory": doc.territory,
         "sales_order": doc.name,
