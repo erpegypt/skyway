@@ -11,7 +11,7 @@ from dateutil.relativedelta import relativedelta
 from erpnext.accounts.utils import get_balance_on, get_stock_accounts, get_stock_and_account_balance, \
 	get_account_currency
 from erpnext.accounts.party import get_party_account
-from erpnext.hr.doctype.expense_claim.expense_claim import update_reimbursed_amount
+from hrms.hr.doctype.expense_claim.expense_claim import update_reimbursed_amount
 from erpnext.accounts.doctype.invoice_discounting.invoice_discounting \
 	import get_party_account_based_on_invoice_discounting
 from erpnext.accounts.deferred_revenue import get_deferred_booking_accounts
