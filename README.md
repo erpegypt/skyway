@@ -1,7 +1,0 @@
-## Skyway
-
-customizations
-
-#### License
-
-MIT
