@@ -26,6 +26,7 @@
   "html_10",
   "get_serial_details",
   "column_break_11",
+  "serial_now",
   "section_break_12",
   "items",
   "section_break_16",
@@ -236,6 +237,13 @@
    "fieldname": "external_customer",
    "fieldtype": "Data",
    "label": "External Customer"
+  },
+  {
+   "default": "0",
+   "description": "This choice, if you enable it, the data will be brought in according to the new serial.",
+   "fieldname": "serial_now",
+   "fieldtype": "Check",
+   "label": "Serial Now"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -252,10 +260,11 @@
    "link_fieldname": "ticket"
   }
  ],
- "modified": "2022-09-07 01:08:11.588667",
+ "modified": "2024-12-18 15:06:41.039036",
  "modified_by": "Administrator",
  "module": "Skyway",
  "name": "Ticket",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -273,5 +282,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "customer"
 }
